@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sample-dash',
@@ -8,26 +7,30 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./sample-dash.component.css']
 })
 export class SampleDashComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
+  private pbls = [
+    {
+      title: 'PBL 1',
+      position: 1,
+      sbls: [{ title: 'SBL 1', position: 1, },{ title: 'SBL 2', position: 2, },]
+    },
+    {
+      title: 'PBL 2',
+      position: 2,
+      sbls: [{ title: 'SBL 1', position: 1, },{ title: 'SBL 2', position: 2, },]
+    },
+    {
+      title: 'PBL 3',
+      position: 3,
+      sbls: [{ title: 'SBL 1', position: 1, },{ title: 'SBL 2', position: 2, },]
+    },
+    {
+      title: 'PBL 4',
+      position: 4,
+      sbls: [{ title: 'SBL 1', position: 1, },{ title: 'SBL 2', position: 2, },]
+    },
+  ];
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  public drop(event: CdkDragDrop<string[]>, backlogs) {
+    moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
+  }
 }
