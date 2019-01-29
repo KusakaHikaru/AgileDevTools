@@ -30,6 +30,8 @@ export class SampleDashComponent {
     },
   ];
 
+  items = ['a', 'b', 'c'];
+
   public drop(event: CdkDragDrop<string[]>, backlogs) {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
   }

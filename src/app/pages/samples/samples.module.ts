@@ -4,8 +4,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { SamplesRoutingModule } from './samples-routing.module';
 import { SampleDashComponent } from './sample-dash/sample-dash.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MaterialModule} from 'src/app/shared/material.module';
+
 
 
 @NgModule({
@@ -13,13 +15,10 @@ import { LayoutModule } from '@angular/cdk/layout';
   imports: [
     CommonModule,
     SamplesRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
     LayoutModule,
     DragDropModule,
+    TextFieldModule,
+    MaterialModule,
   ]
 })
 export class SamplesModule { }

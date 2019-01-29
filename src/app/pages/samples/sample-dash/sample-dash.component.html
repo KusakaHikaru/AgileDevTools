@@ -3,7 +3,7 @@
   <mat-grid-list cols="2" rowHeight="350px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
     <mat-grid-tile *ngFor="let pbl of pbls" [colspan]="2" [rowspan]="1" cdkDrag>
       <mat-card class="dashboard-card">
-        <mat-card-header class="dashboard-header">
+        <mat-card-header class="dashboard-header" cdkDragHandle>
           <mat-card-title>
             {{pbl.title}}
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
@@ -17,8 +17,13 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Card Content Here</div>
-          <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)">
-            <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>{{sbl.title}}</div>
+          <div class="wrap">
+            <mat-form-field class="example-form">
+              <textarea matInput placeholder="受け入れ条件" class="example-textarea"></textarea>
+            </mat-form-field>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)" >
+              <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>{{sbl.title}}</div>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>
