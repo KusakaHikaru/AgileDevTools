@@ -29,7 +29,12 @@
               <textarea matInput placeholder="受け入れ条件" class="example-textarea"></textarea>
             </mat-form-field>
             <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)" >
-              <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>{{sbl.title}}</div>
+              <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>
+                <mat-form-field class="sbl-title">
+                  <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
+                </mat-form-field>
+                
+              </div>
             </div>
           </div>
         </mat-card-content>

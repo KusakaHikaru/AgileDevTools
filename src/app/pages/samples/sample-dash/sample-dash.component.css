@@ -44,7 +44,7 @@
 }
 
 .example-box {
-  padding: 20px 10px;
+  padding: 0px 10px 20px 10px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
@@ -55,6 +55,7 @@
   cursor: move;
   background: white;
   font-size: 14px;
+  height: 60px;
 }
 
 .cdk-drag-preview {
@@ -84,7 +85,7 @@
 .example-form {
   height: 200px;
   width: 30%;
-  justify-content: space-between; 
+  /* justify-content: space-between;  */
   margin: 0;
 }
 
@@ -108,4 +109,9 @@
   height: 1em;
   width: 3em;
   margin-left: 1.5em;
+}
+
+.sbl-title {
+  height: 1em;
+  width: 20em;
 }
