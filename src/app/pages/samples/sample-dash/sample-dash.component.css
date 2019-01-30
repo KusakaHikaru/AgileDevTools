@@ -96,8 +96,10 @@
 .pbl-number {
   height: 1em;
   width: 10em;
-  font-size: 0.75em;
 }
+
 .pbl-title {
+  height: 1em;
+  width: 30em;
   margin-left: 1.5em;
 }

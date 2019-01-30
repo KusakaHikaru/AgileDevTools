@@ -6,9 +6,11 @@
         <mat-card-header class="dashboard-header" cdkDragHandle>
           <mat-card-title>
             <mat-form-field class="pbl-number">
-              <input matInput placeholder="チケットID" value="">
+              <input class="pbl-number-field" matInput placeholder="チケットID" value="">
             </mat-form-field>
-            <span class="pbl-title">{{pbl.title}}</span>
+            <mat-form-field class="pbl-title">
+              <input matInput placeholder="PBL名" [(ngModel)]="pbl.title">
+            </mat-form-field>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
