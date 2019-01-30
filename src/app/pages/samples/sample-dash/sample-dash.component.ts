@@ -38,6 +38,13 @@ export class SampleDashComponent {
     },
   ];
 
+  private labels = [
+    {id: '01', viewValue: '設計'},
+    {id: '02', viewValue: '設計Rv'},
+    {id: '03', viewValue: 'M_UT'},
+    {id: '04', viewValue: 'M_UT_Rv'},
+  ];
+
 
   public drop(event: CdkDragDrop<string[]>, backlogs) {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);

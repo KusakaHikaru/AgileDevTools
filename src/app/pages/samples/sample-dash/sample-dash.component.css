@@ -111,9 +111,15 @@
   margin-left: 1.5em;
 }
 
+.sbl-label {
+  height: 1em;
+  width: 10em;
+}
+
 .sbl-title {
   height: 1em;
   width: 20em;
+  margin-left: 1.5em;
 }
 
 .sbl-time {

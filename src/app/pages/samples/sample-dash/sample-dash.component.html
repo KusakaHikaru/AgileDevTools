@@ -30,6 +30,13 @@
             </mat-form-field>
             <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)" >
               <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>
+                <mat-form-field class="sbl-label">
+                  <mat-select placeholder="ラベル">
+                    <mat-option *ngFor="let label of labels" [value]="label.id">
+                        {{label.id}}.{{label.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
                 <mat-form-field class="sbl-title">
                   <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
                 </mat-form-field>
