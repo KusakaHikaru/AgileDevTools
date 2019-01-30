@@ -56,6 +56,7 @@
   background: white;
   font-size: 14px;
   height: 60px;
+  justify-content: start;
 }
 
 .cdk-drag-preview {
@@ -85,7 +86,6 @@
 .example-form {
   height: 200px;
   width: 30%;
-  /* justify-content: space-between;  */
   margin: 0;
 }
 
@@ -114,4 +114,10 @@
 .sbl-title {
   height: 1em;
   width: 20em;
+}
+
+.sbl-time {
+  height: 1em;
+  width: 3em;
+  margin-left: 1.5em;
 }
