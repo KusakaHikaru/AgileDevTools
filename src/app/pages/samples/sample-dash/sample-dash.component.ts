@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatSnackBar} from '@angular/material';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import * as _ from 'lodash';
 
@@ -20,6 +21,7 @@ export class SampleDashComponent {
     {id: '04', viewValue: 'M_UT_Rv'},
   ];
 
+  constructor(private snackBar: MatSnackBar) {}
 
   public drop(event: CdkDragDrop<string[]>, backlogs: []): void {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
@@ -33,7 +35,12 @@ export class SampleDashComponent {
     pbl.sbls.push(new SubjectBacklog());
   }
 
-  public remove(index: number, backlogs: []): void {
-    _.pullAt(backlogs, index);
+  public remove(index: number, target: [], backlogs: ProductBacklog[]): void {
+    const originBacklogs = _.cloneDeep(backlogs);
+    _.pullAt(target, index);
+    const snackBarRef =  this.snackBar.open('削除しました', '取り消し', {duration: 3000});
+    snackBarRef.onAction().subscribe(() => {
+      this.pbls = originBacklogs;
+    });
   }
 }

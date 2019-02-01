@@ -1,7 +1,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list class="grit-list" cols="1" rowHeight="580px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
-    <mat-grid-tile *ngFor="let pbl of pbls; index as i" cdkDrag>
+    <mat-grid-tile *ngFor="let pbl of pbls; index as pblIndex" cdkDrag>
       <mat-card class="dashboard-card">
         <mat-card-header class="dashboard-header" cdkDragHandle>
           <mat-card-title>
@@ -18,7 +18,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="remove(i, pbls)">削除</button>
+              <button mat-menu-item (click)="remove(pblIndex, pbls, pbls)">削除</button>
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
@@ -28,20 +28,30 @@
               <textarea matInput placeholder="受け入れ条件" class="example-textarea"></textarea>
             </mat-form-field>
             <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)" >
-              <div class="example-box" *ngFor="let sbl of pbl.sbls" cdkDrag>
-                <mat-form-field class="sbl-label">
-                  <mat-select placeholder="ラベル" [(ngModel)]="sbl.label">
-                    <mat-option *ngFor="let label of labels" [value]="label.id">
-                        {{label.id}}.{{label.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field class="sbl-title">
-                  <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
-                </mat-form-field>
-                <mat-form-field class="sbl-time">
-                  <input matInput placeholder="時間" [(ngModel)]="sbl.estimated">
-                </mat-form-field>
+              <div class="example-box" *ngFor="let sbl of pbl.sbls; index as sblIndex" cdkDrag>
+                <div>
+                  <mat-form-field class="sbl-label">
+                    <mat-select placeholder="ラベル" [(ngModel)]="sbl.label">
+                      <mat-option *ngFor="let label of labels" [value]="label.id">
+                          {{label.id}}.{{label.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field class="sbl-title">
+                    <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
+                  </mat-form-field>
+                  <mat-form-field class="sbl-time">
+                    <input matInput placeholder="時間" [(ngModel)]="sbl.estimated">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <button mat-icon-button class="more-button-sbl" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" xPosition="before">
+                    <button mat-menu-item (click)="remove(sblIndex, pbl.sbls, pbls)">削除</button>
+                  </mat-menu>
+                </div>
               </div>
               <button mat-mini-fab class="add-sbl-button" (click)="addSbl(pbl)"><i class="fas fa-plus"></i></button>
             </div>
