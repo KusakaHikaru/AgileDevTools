@@ -10,15 +10,11 @@ export class ProductBacklog {
   public position: number;
   public sbls: SubjectBacklog[];
 
-  constructor(id?: string, title?: string, sp?: number, position?: number, sbls?: SubjectBacklog[]) {
-    this.id = id || '';
-    this.title = title || '';
-    this.sp = sp || 0;
-    this.position = position || 0;
-    this.sbls = sbls || [new SubjectBacklog()];
+  constructor(init?: Partial<ProductBacklog>) {
+    init? Object.assign(this, init) : this.reset();
   }
 
-  reset(): void {
+  public reset(): void {
     this.id =  '';
     this.title = '';
     this.sp =  0;

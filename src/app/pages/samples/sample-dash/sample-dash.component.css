@@ -56,7 +56,7 @@
   background: white;
   font-size: 14px;
   height: 60px;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .cdk-drag-preview {

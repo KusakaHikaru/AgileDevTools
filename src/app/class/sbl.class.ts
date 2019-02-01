@@ -8,15 +8,11 @@ export class SubjectBacklog {
   public position: number;
   public description: string;
 
-  constructor(id?: string, title?: string, estimatedTime?: number, position?: number, description?: string) {
-    this.id = id || '';
-    this.title = title || '';
-    this.estimatedTime = estimatedTime || 0;
-    this.position = position || 0;
-    this.description = description || '';
+  constructor(init?: Partial<SubjectBacklog>) {
+    init? Object.assign(this, init) : this.reset();
   }
 
-  reset(): void {
+  public reset(): void {
     this.id =  '';
     this.title = '';
     this.estimatedTime =  0;
