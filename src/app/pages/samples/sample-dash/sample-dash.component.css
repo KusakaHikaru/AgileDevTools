@@ -16,7 +16,7 @@
 
 .more-button {
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 10px;
 }
 
@@ -62,6 +62,7 @@
   font-size: 14px;
   height: 60px;
   justify-content: flex-start;
+  margin: 3px;
 }
 
 .cdk-drag-preview {
@@ -79,10 +80,6 @@
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
-/* .example-box:last-child {
-  border: none;
-} */
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);

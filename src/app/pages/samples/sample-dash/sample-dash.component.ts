@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-// import { faPlusCircle } from '@fortawesome/fa-plus-circle';
+import * as _ from 'lodash';
 
 import { ProductBacklog } from 'src/app/class/pbl.class';
 import { SubjectBacklog } from 'src/app/class/sbl.class';
@@ -10,7 +10,7 @@ import { SubjectBacklog } from 'src/app/class/sbl.class';
   styleUrls: ['./sample-dash.component.css']
 })
 export class SampleDashComponent {
-  // private faPlusCircle = faPlusCircle
+
   private pbls = [new ProductBacklog()];
 
   private labels = [
@@ -21,7 +21,7 @@ export class SampleDashComponent {
   ];
 
 
-  public drop(event: CdkDragDrop<string[]>, backlogs): void {
+  public drop(event: CdkDragDrop<string[]>, backlogs: []): void {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
   }
 
@@ -31,5 +31,9 @@ export class SampleDashComponent {
 
   public addSbl(pbl: ProductBacklog): void {
     pbl.sbls.push(new SubjectBacklog());
+  }
+
+  public remove(index: number, backlogs: []): void {
+    _.pullAt(backlogs, index);
   }
 }
