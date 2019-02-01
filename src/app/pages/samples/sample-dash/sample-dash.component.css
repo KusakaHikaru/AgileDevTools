@@ -2,6 +2,10 @@
   margin: 20px;
 }
 
+.grit-list {
+  min-height: 350px;
+}
+
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -37,10 +41,11 @@
   max-width: 100%;
   border: solid 1px #ccc;
   min-height: 60px;
+  max-height: 420px;
   display: block;
   background: white;  
   border-radius: 4px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .example-box {
@@ -84,13 +89,12 @@
 }
 
 .example-form {
-  height: 200px;
-  width: 35%;
+  width: 37%;
   margin: 0;
 }
 
 .example-textarea {
-  height: 160px;
+  height: 395px;
   width: 100%;
   margin: 0;
 }
@@ -131,4 +135,12 @@
 .add-pbl-button {
   float: right;
   margin-right: 20px;
+  margin-bottom: 1em;
+}
+
+.add-sbl-button {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 1em;
 }

@@ -1,7 +1,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
-    <mat-grid-tile *ngFor="let pbl of pbls" [colspan]="2" [rowspan]="1" cdkDrag>
+  <mat-grid-list class="grit-list" cols="1" rowHeight="580px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
+    <mat-grid-tile *ngFor="let pbl of pbls" cdkDrag>
       <mat-card class="dashboard-card">
         <mat-card-header class="dashboard-header" cdkDragHandle>
           <mat-card-title>
@@ -12,7 +12,7 @@
               <input matInput placeholder="PBL名" [(ngModel)]="pbl.title">
             </mat-form-field>
             <mat-form-field class="pbl-point">
-              <input matInput placeholder="SP" [(ngModel)]="pbl.sp">
+              <input matInput placeholder="SP" [(ngModel)]="pbl.estimated">
             </mat-form-field>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -41,9 +41,10 @@
                   <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
                 </mat-form-field>
                 <mat-form-field class="sbl-time">
-                  <input matInput placeholder="時間" [(ngModel)]="sbl.estimatedTime">
+                  <input matInput placeholder="時間" [(ngModel)]="sbl.estimated">
                 </mat-form-field>
               </div>
+              <button mat-mini-fab class="add-sbl-button" (click)="addSbl(pbl)"><i class="fas fa-plus"></i></button>
             </div>
           </div>
         </mat-card-content>

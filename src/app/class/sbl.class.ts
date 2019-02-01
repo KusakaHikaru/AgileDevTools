@@ -4,7 +4,7 @@
 export class SubjectBacklog {
   public id: string;
   public title: string;
-  public estimatedTime: number;
+  public estimated: number | null;
   public position: number;
   public description: string;
 
@@ -15,7 +15,7 @@ export class SubjectBacklog {
   public reset(): void {
     this.id =  '';
     this.title = '';
-    this.estimatedTime =  0;
+    this.estimated =  null;
     this.position =  0;
     this.description = '';
   }

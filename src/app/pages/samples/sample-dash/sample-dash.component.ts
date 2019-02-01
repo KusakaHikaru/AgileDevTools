@@ -3,6 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 // import { faPlusCircle } from '@fortawesome/fa-plus-circle';
 
 import { ProductBacklog } from 'src/app/class/pbl.class';
+import { SubjectBacklog } from 'src/app/class/sbl.class';
 @Component({
   selector: 'app-sample-dash',
   templateUrl: './sample-dash.component.html',
@@ -10,36 +11,7 @@ import { ProductBacklog } from 'src/app/class/pbl.class';
 })
 export class SampleDashComponent {
   // private faPlusCircle = faPlusCircle
-  private pbls = [
-    {
-      id: 'PBL-001',
-      title: 'PBL 1',
-      sp: 0,
-      position: 1,
-      sbls: [{ title: 'SBL 1', position: 1, estimatedTime:0 },{ title: 'SBL 2', position: 2, estimatedTime:0 },]
-    },
-    // {
-    //   id: 'PBL-002',
-    //   title: 'PBL 2',
-    //   sp: 0,
-    //   position: 2,
-    //   sbls: [{ title: 'SBL 1', position: 1, estimatedTime:0 },{ title: 'SBL 2', position: 2, estimatedTime:0 },]
-    // },
-    // {
-    //   id: 'PBL-003',
-    //   title: 'PBL 3',
-    //   sp: 0,
-    //   position: 3,
-    //   sbls: [{ title: 'SBL 1', position: 1, estimatedTime:0 },{ title: 'SBL 2', position: 2, estimatedTime:0 },]
-    // },
-    // {
-    //   id: 'PBL-004',
-    //   title: 'PBL 4',
-    //   sp: 0,
-    //   position: 4,
-    //   sbls: [{ title: 'SBL 1', position: 1, estimatedTime:0 },{ title: 'SBL 2', position: 2, estimatedTime:0 },]
-    // },
-  ];
+  private pbls = [new ProductBacklog()];
 
   private labels = [
     {id: '01', viewValue: '設計'},
@@ -55,5 +27,9 @@ export class SampleDashComponent {
 
   public addPbl(): void {
     this.pbls.push(new ProductBacklog());
+  }
+
+  public addSbl(pbl: ProductBacklog): void {
+    pbl.sbls.push(new SubjectBacklog());
   }
 }

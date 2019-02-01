@@ -6,7 +6,7 @@ import { SubjectBacklog } from './sbl.class';
 export class ProductBacklog {
   public id: string;
   public title: string;
-  public sp: number;
+  public estimated: number | null;
   public position: number;
   public sbls: SubjectBacklog[];
 
@@ -17,7 +17,7 @@ export class ProductBacklog {
   public reset(): void {
     this.id =  '';
     this.title = '';
-    this.sp =  0;
+    this.estimated =  null;
     this.position =  0;
     this.sbls = [new SubjectBacklog()];
   }
