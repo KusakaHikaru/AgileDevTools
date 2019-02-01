@@ -127,3 +127,8 @@
   width: 3em;
   margin-left: 1.5em;
 }
+
+.add-pbl-button {
+  float: right;
+  margin-right: 20px;
+}
