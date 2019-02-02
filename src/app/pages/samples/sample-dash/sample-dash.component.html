@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">タスク投入支援</h1>
   <mat-grid-list class="grit-list" cols="1" rowHeight="580px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
     <mat-grid-tile *ngFor="let pbl of pbls; index as pblIndex" cdkDrag>
       <mat-card class="dashboard-card">
@@ -12,7 +12,14 @@
               <input matInput placeholder="PBL名" [(ngModel)]="pbl.title">
             </mat-form-field>
             <mat-form-field class="pbl-point">
-              <input matInput placeholder="SP" [(ngModel)]="pbl.estimated">
+              <input matInput placeholder="ポイント" type="number" [(ngModel)]="pbl.estimated">
+            </mat-form-field>
+            <mat-form-field class="pbl-estimated">
+              <input matInput placeholder="見積時間" [(ngModel)]="pbl.estimatedTimeSum" disabled>
+              <span matSuffix *ngIf="pbl.estimatedTimeSum" class="unit-pbl-estimated">&nbsp;h</span>
+              <mat-label class="placeholder-pbl-estimated">
+                見積時間
+              </mat-label>
             </mat-form-field>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -27,13 +34,13 @@
             <mat-form-field class="example-form">
               <textarea matInput placeholder="受け入れ条件" class="example-textarea"></textarea>
             </mat-form-field>
-            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)" >
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)">
               <div class="example-box" *ngFor="let sbl of pbl.sbls; index as sblIndex" cdkDrag>
                 <div>
                   <mat-form-field class="sbl-label">
                     <mat-select placeholder="ラベル" [(ngModel)]="sbl.label">
                       <mat-option *ngFor="let label of labels" [value]="label.id">
-                          {{label.id}}.{{label.viewValue}}
+                        {{label.id}}.{{label.viewValue}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -41,7 +48,11 @@
                     <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
                   </mat-form-field>
                   <mat-form-field class="sbl-time">
-                    <input matInput placeholder="時間" [(ngModel)]="sbl.estimated">
+                    <input matInput type="number" [(ngModel)]="sbl.estimated" (change)="sumEstimatedTime(pbl)">
+                    <span matSuffix *ngIf="sbl.estimated">&nbsp;h</span>
+                    <mat-label class="placeholder-sbl-time">
+                      時間
+                    </mat-label>
                   </mat-form-field>
                 </div>
                 <div>
@@ -49,7 +60,7 @@
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item (click)="remove(sblIndex, pbl.sbls, pbls)">削除</button>
+                    <button mat-menu-item (click)="remove(sblIndex, pbl.sbls, pbls); sumEstimatedTime(pbl)">削除</button>
                   </mat-menu>
                 </div>
               </div>
@@ -61,4 +72,10 @@
     </mat-grid-tile>
   </mat-grid-list>
   <button mat-fab class="add-pbl-button" color="primary" (click)="addPbl()"><i class="fas fa-plus fa-lg"></i></button>
+  <footer>
+    <mat-grid-list class="footer-content" cols="8" rowHeight="60px">
+      <mat-grid-tile>ストリーポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
+      <mat-grid-tile>見積合計：{{sumBy(pbls, 'estimatedTimeSum') || 0}}&nbsp;h</mat-grid-tile>
+    </mat-grid-list>
+  </footer>
 </div>

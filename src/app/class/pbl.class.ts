@@ -7,6 +7,7 @@ export class ProductBacklog {
   public id: string;
   public title: string;
   public estimated: number | null;
+  public estimatedTimeSum: number | null;
   public sbls: SubjectBacklog[];
 
   constructor(init?: Partial<ProductBacklog>) {
@@ -17,6 +18,7 @@ export class ProductBacklog {
     this.id =  '';
     this.title = '';
     this.estimated =  null;
+    this.estimatedTimeSum = null;
     this.sbls = [new SubjectBacklog()];
   }
 
