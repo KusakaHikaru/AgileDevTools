@@ -145,7 +145,7 @@
 
 .sbl-description {
   height: 1em;
-  width: 20em;
+  width: calc(100% - 33.5em - 4.5em);
   margin-left: 1.5em;
 }
 
