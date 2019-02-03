@@ -50,6 +50,13 @@ export class SampleDashComponent {
   }
 
   /**
+   * openDescriptionModal
+   */
+  public openDescriptionModal() {
+
+  }
+
+  /**
    * 見積時間合計の計算
    * @param pbl 計算対象のプロダクトバックログ
    */

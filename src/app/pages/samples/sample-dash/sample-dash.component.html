@@ -17,9 +17,7 @@
             <mat-form-field class="pbl-estimated">
               <input matInput placeholder="見積時間" [(ngModel)]="pbl.estimatedTimeSum" disabled>
               <span matSuffix *ngIf="pbl.estimatedTimeSum" class="unit-pbl-estimated">&nbsp;h</span>
-              <mat-label class="placeholder-pbl-estimated">
-                見積時間
-              </mat-label>
+              <mat-label class="placeholder-pbl-estimated">見積時間</mat-label>
             </mat-form-field>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -50,9 +48,10 @@
                   <mat-form-field class="sbl-time">
                     <input matInput type="number" [(ngModel)]="sbl.estimated" (change)="sumEstimatedTime(pbl)">
                     <span matSuffix *ngIf="sbl.estimated">&nbsp;h</span>
-                    <mat-label class="placeholder-sbl-time">
-                      時間
-                    </mat-label>
+                    <mat-label class="placeholder-sbl-time">時間</mat-label>
+                  </mat-form-field>
+                  <mat-form-field class="sbl-description" (click)="openDescriptionModal()">
+                    <input matInput placeholder="説明文" [(ngModel)]="sbl.description">
                   </mat-form-field>
                 </div>
                 <div>
@@ -64,14 +63,14 @@
                   </mat-menu>
                 </div>
               </div>
-              <button mat-mini-fab class="add-sbl-button" (click)="addSbl(pbl)"><i class="fas fa-plus"></i></button>
+              <button mat-icon-button class="add-sbl-button" color="accent" (click)="addSbl(pbl)"><i class="fas fa-plus-circle fa-2x"></i></button>
             </div>
           </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-  <button mat-fab class="add-pbl-button" color="primary" (click)="addPbl()"><i class="fas fa-plus fa-lg"></i></button>
+  <button mat-fab class="add-pbl-button" color="primary" (click)="addPbl()"><i class="fas fa-plus fa-2x"></i></button>
   <footer>
     <mat-grid-list class="footer-content" cols="8" rowHeight="60px">
       <mat-grid-tile>ストリーポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
