@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material';
 
 import * as _ from 'lodash';
 
 import { ProductBacklog } from 'src/app/class/pbl.class';
 import { SubjectBacklog } from 'src/app/class/sbl.class';
+import { DescriptionModalComponent } from 'src/app/pages/samples/description-modal/description-modal.component';
+
 @Component({
   selector: 'app-sample-dash',
   templateUrl: './sample-dash.component.html',
@@ -22,7 +25,10 @@ export class SampleDashComponent {
     { id: '04', viewValue: 'M_UT_Rv' },
   ];
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) { }
 
   /**
    * D&Dのドロップイベント処理
@@ -52,8 +58,16 @@ export class SampleDashComponent {
   /**
    * openDescriptionModal
    */
-  public openDescriptionModal() {
+  public openDescriptionModal(sbl: SubjectBacklog) {
+    const dialogRef = this.dialog.open(DescriptionModalComponent, {
+      width: '400px',
+      height: '400px',
+      data: sbl.description,
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      sbl.description = result || '';
+    });
   }
 
   /**

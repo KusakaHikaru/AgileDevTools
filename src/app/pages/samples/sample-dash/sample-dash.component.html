@@ -50,7 +50,7 @@
                     <span matSuffix *ngIf="sbl.estimated">&nbsp;h</span>
                     <mat-label class="placeholder-sbl-time">時間</mat-label>
                   </mat-form-field>
-                  <mat-form-field class="sbl-description" (click)="openDescriptionModal()">
+                  <mat-form-field class="sbl-description" (click)="openDescriptionModal(sbl)">
                     <input matInput placeholder="説明文" [(ngModel)]="sbl.description">
                   </mat-form-field>
                 </div>
