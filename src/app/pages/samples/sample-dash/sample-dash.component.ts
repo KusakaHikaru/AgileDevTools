@@ -17,7 +17,7 @@ import { DescriptionModalComponent } from 'src/app/pages/samples/description-mod
 export class SampleDashComponent {
 
   private pbls = [new ProductBacklog()];
-
+  private totalWorkingTime: number | null = null;
   private labels = [
     { id: '01', viewValue: '設計' },
     { id: '02', viewValue: '設計Rv' },
@@ -35,7 +35,7 @@ export class SampleDashComponent {
    * @param event イベント
    * @param backlogs D&D対象のバックログ(PBL・SBL)
    */
-  public drop(event: CdkDragDrop<string[]>, backlogs: []): void {
+  public drop(event: CdkDragDrop<string[]>, backlogs: any[]): void {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
   }
 
@@ -93,7 +93,7 @@ export class SampleDashComponent {
    * @param target 削除対象のバックログオブジェクトList
    * @param backlogs 取り消し用のオリジナルバックログオブジェクト
    */
-  public remove(index: number, target: [], pbls: ProductBacklog[]): void {
+  public remove(index: number, target: any[], pbls: ProductBacklog[]): void {
     const originBacklogs = _.cloneDeep(pbls);
     _.pullAt(target, index);
     this.cancelRemoveSnackBar(originBacklogs);

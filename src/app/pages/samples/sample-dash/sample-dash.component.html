@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <h1 class="mat-h1">タスク投入支援</h1>
+  <h1 class="mat-h1">タスクチケット投入支援</h1>
   <mat-grid-list class="grit-list" cols="1" rowHeight="580px" cdkDropList (cdkDropListDropped)="drop($event, pbls)">
     <mat-grid-tile *ngFor="let pbl of pbls; index as pblIndex" cdkDrag>
       <mat-card class="dashboard-card">
@@ -73,8 +73,16 @@
   <button mat-fab class="add-pbl-button" color="primary" (click)="addPbl()"><i class="fas fa-plus fa-2x"></i></button>
   <footer>
     <mat-grid-list class="footer-content" cols="8" rowHeight="60px">
-      <mat-grid-tile>ストリーポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>ポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
       <mat-grid-tile>見積合計：{{sumBy(pbls, 'estimatedTimeSum') || 0}}&nbsp;h</mat-grid-tile>
+      <mat-grid-tile>
+        <div>総稼動：&nbsp;</div>
+        <input class="total_working_time" [(ngModel)]="totalWorkingTime">
+        <div>&nbsp;h</div>
+      </mat-grid-tile>
+      <mat-grid-tile>バッファ：{{totalWorkingTime - sumBy(pbls, 'estimatedTimeSum') || 0}}&nbsp;h</mat-grid-tile>
+      <mat-grid-tile><button mat-flat-button color="primary">チケット作成</button></mat-grid-tile>
     </mat-grid-list>
   </footer>
 </div>
