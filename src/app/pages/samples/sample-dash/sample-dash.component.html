@@ -34,7 +34,7 @@
             </mat-form-field>
             <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)">
               <div class="example-box" *ngFor="let sbl of pbl.sbls; index as sblIndex" cdkDrag>
-                <div>
+                <div class="input-area">
                   <mat-form-field class="sbl-label">
                     <mat-select placeholder="ラベル" [(ngModel)]="sbl.label">
                       <mat-option *ngFor="let label of labels" [value]="label.id">

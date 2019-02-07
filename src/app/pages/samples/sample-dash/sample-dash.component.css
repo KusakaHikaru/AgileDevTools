@@ -60,6 +60,10 @@
   margin: 3px;
 }
 
+.input-area {
+  width: 100%;
+}
+
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
