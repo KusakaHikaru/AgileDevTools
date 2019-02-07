@@ -72,7 +72,8 @@
   </mat-grid-list>
   <button mat-fab class="add-pbl-button" color="primary" (click)="addPbl()"><i class="fas fa-plus fa-2x"></i></button>
   <footer>
-    <mat-grid-list class="footer-content" cols="8" rowHeight="60px">
+    <mat-grid-list class="footer-content" cols="9" rowHeight="60px">
+      <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile>ポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
       <mat-grid-tile>見積合計：{{sumBy(pbls, 'estimatedTimeSum') || 0}}&nbsp;h</mat-grid-tile>
