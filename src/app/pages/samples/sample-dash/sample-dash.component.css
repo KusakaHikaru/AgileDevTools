@@ -1,5 +1,5 @@
 .grid-container {
-  margin: 20px;
+  margin: 20px 20px 64px 20px;
 }
 
 .grit-list {
@@ -164,9 +164,9 @@
 }
 
 .add-pbl-button {
-  float: right;
-  margin-right: 20px;
-  margin-bottom: 74px;
+  position: fixed;
+  right: 20px;
+  bottom: 74px;
   z-index: 1050;
 }
 
@@ -175,6 +175,10 @@
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 1em;
+}
+
+.tamplate-area {
+  border-left: 1px solid #bbb;
 }
 
 .total_working_time {
@@ -191,6 +195,7 @@
   outline: 0;
   border-bottom: solid 1px;
 }
+
 
 footer {
   background-color: black;
