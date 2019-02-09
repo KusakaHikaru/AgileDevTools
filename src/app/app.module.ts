@@ -14,7 +14,7 @@ import { BacklogSidenavComponent } from 'src/app/pages/samples/backlog-sidenav/b
 @NgModule({
   declarations: [
     AppComponent,
-    BacklogSidenavComponent,    
+    BacklogSidenavComponent,
   ],
   imports: [
     BrowserModule,
