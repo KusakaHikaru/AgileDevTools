@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MaterialModule } from 'src/app/shared/material.module';
+import { BacklogSidenavComponent } from 'src/app/pages/samples/backlog-sidenav/backlog-sidenav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    BacklogSidenavComponent,    
   ],
   imports: [
     BrowserModule,

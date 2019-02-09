@@ -1,0 +1,11 @@
+.backlog-sidenav {
+  min-width: 84px;
+}
+
+.template-box {
+  width: 64px;
+  height: 64px;
+  border: dashed 1px #ccc;
+  margin: 10px;
+  border-radius: 6px;
+}
