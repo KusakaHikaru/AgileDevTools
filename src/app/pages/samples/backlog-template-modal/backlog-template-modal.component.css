@@ -1,0 +1,10 @@
+mat-form-field {
+  width: 100%;
+}
+.description-testarea {
+  height: 13em;
+  width: 100%;
+}
+.dialog-actions {
+  float: right;
+}
