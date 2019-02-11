@@ -26,8 +26,8 @@ export class BacklogSidenavComponent {
 
   public openBacklogModal(): void {
     const dialogRef = this.dialog.open(BacklogTemplateModalComponent, {
-      width: '400px',
-      height: '400px',
+      width: '800px',
+      height: '500px',
       data: 'hoge',
     });
 

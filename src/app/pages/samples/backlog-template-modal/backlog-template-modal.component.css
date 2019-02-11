@@ -8,3 +8,70 @@ mat-form-field {
 .dialog-actions {
   float: right;
 }
+
+.example-list {
+  width: 100%;
+  border: solid 1px #ccc;
+  height: calc(100% - 6.25em);
+  display: block;
+  background: white;  
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.example-box {
+  padding: 0px 10px 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+  height: 60px;
+  margin: 3px;
+}
+
+.sbl-label {
+  height: 1em;
+  width: 10em;
+}
+
+.sbl-title {
+  height: 1em;
+  width: 20em;
+  margin-left: 1.5em;
+}
+
+.sbl-time {
+  height: 1em;
+  width: 3.5em;
+  margin-left: 1.5em;
+  text-align: right;
+}
+
+.sbl-description {
+  height: 1em;
+  width: calc(100% - 33.5em - 4.5em);
+  margin-left: 1.5em;
+}
+
+.sbl-description input{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder-sbl-time {
+  margin-right: 1.3em;
+}
+
+.add-sbl-button {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 1em;
+}

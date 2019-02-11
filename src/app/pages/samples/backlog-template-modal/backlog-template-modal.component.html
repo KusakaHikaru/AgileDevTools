@@ -1,10 +1,54 @@
-<h1 mat-dialog-title>説明文を入力してください</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <textarea class="description-testarea" matInput placeholder="説明文" [(ngModel)]="template"></textarea>
-  </mat-form-field>
+
+<h1 mat-dialog-title>SBLテンプレート作成</h1>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)">
+  <div class="example-box" *ngFor="let sbl of sbls; index as sblIndex" cdkDrag>
+    <div class="input-area">
+      <mat-form-field class="sbl-label">
+        <mat-select placeholder="ラベル" [(ngModel)]="sbl.label">
+          <mat-option *ngFor="let label of labels" [value]="label.id">
+            {{label.id}}.{{label.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="sbl-title">
+        <input matInput placeholder="SBL名" [(ngModel)]="sbl.title">
+      </mat-form-field>
+      <mat-form-field class="sbl-time">
+        <input matInput type="number" [(ngModel)]="sbl.estimated">
+        <span matSuffix *ngIf="sbl.estimated">&nbsp;h</span>
+        <mat-label class="placeholder-sbl-time">時間</mat-label>
+      </mat-form-field>
+      <mat-form-field class="sbl-description" (click)="changeDescriptionModal(sbl)">
+        <input matInput placeholder="説明文" [(ngModel)]="sbl.description">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-icon-button class="more-button-sbl" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="remove(sblIndex, sbls, sbls);">削除</button>
+      </mat-menu>
+    </div>
+  </div>
+  <button mat-icon-button class="add-sbl-button" color="accent" (click)="addSbl()"><i class="fas fa-plus-circle fa-2x"></i></button>
 </div>
 <div mat-dialog-actions class="dialog-actions">
   <button mat-button (click)="onNoClick()">キャンセル</button>
   <button mat-button [mat-dialog-close]="template" cdkFocusInitial>決定</button>
+</div>
+
+
+
+<div *ngIf="false">
+  <h1 mat-dialog-title>説明文を入力してください</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <textarea class="description-testarea" matInput placeholder="説明文" [(ngModel)]="template"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onNoClick()">キャンセル</button>
+    <button mat-button [mat-dialog-close]="template" cdkFocusInitial>決定</button>
+  </div>
 </div>

@@ -60,7 +60,7 @@ export class SampleDashComponent {
    */
   public openDescriptionModal(sbl: SubjectBacklog) {
     const dialogRef = this.dialog.open(DescriptionModalComponent, {
-      width: '400px',
+      width: '800px',
       height: '400px',
       data: sbl.description,
     });
