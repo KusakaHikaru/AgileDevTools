@@ -4,7 +4,7 @@
 import { SubjectBacklog } from './sbl.class';
 import { Backlog } from './backlog.class';
 
-export class ProductBacklog extends Backlog{
+export class ProductBacklog extends Backlog {
   public estimatedTimeSum: number | null;
   public sbls: SubjectBacklog[];
 

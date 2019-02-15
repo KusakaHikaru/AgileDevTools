@@ -35,7 +35,7 @@ export class SampleDashComponent {
    * @param event イベント
    * @param backlogs D&D対象のバックログ(PBL・SBL)
    */
-  public drop(event: CdkDragDrop<string[]>, backlogs: any[]): void {
+  public drop<T>(event: CdkDragDrop<string[]>, backlogs: T[]): void {
     moveItemInArray(backlogs, event.previousIndex, event.currentIndex);
   }
 
@@ -58,7 +58,7 @@ export class SampleDashComponent {
   /**
    * openDescriptionModal
    */
-  public openDescriptionModal(sbl: SubjectBacklog) {
+  public openDescriptionModal(sbl: SubjectBacklog): void {
     const dialogRef = this.dialog.open(DescriptionModalComponent, {
       width: '800px',
       height: '400px',
@@ -93,7 +93,7 @@ export class SampleDashComponent {
    * @param target 削除対象のバックログオブジェクトList
    * @param backlogs 取り消し用のオリジナルバックログオブジェクト
    */
-  public remove(index: number, target: any[], pbls: ProductBacklog[]): void {
+  public remove<T>(index: number, target: T[], pbls: ProductBacklog[]): void {
     const originBacklogs = _.cloneDeep(pbls);
     _.pullAt(target, index);
     this.cancelRemoveSnackBar(originBacklogs);
@@ -103,7 +103,7 @@ export class SampleDashComponent {
    * 削除を取り消すsnackBar表示・アクション処理
    * @param originBacklogs 復元元のPBLオブジェクト
    */
-  private cancelRemoveSnackBar(originBacklogs: ProductBacklog[]) {
+  private cancelRemoveSnackBar(originBacklogs: ProductBacklog[]): void {
     const snackBarRef = this.snackBar.open('削除しました', '取り消し', { duration: 3000 });
     snackBarRef.onAction().subscribe(() => {
       this.setBacklogs(originBacklogs);
@@ -111,9 +111,10 @@ export class SampleDashComponent {
   }
 
   /**
-   * バックログリストプロパティに値をセット
+   * 削除を取り処理用：バックログオブジェクトListプロパティに値をセット
+   * @param backlogs バックログオブジェクトList
    */
-  public setBacklogs(backlogs: any) {
-    this.pbls = backlogs;
+  public setBacklogs(backlogs: ProductBacklog[] | SubjectBacklog[]): void {
+    this.pbls = backlogs as ProductBacklog[];
   }
 }

@@ -12,7 +12,7 @@ import { SampleDashComponent } from 'src/app/pages/samples/sample-dash/sample-da
   templateUrl: './backlog-template-modal.component.html',
   styleUrls: ['./backlog-template-modal.component.css']
 })
-export class BacklogTemplateModalComponent extends SampleDashComponent{
+export class BacklogTemplateModalComponent extends SampleDashComponent {
 
   private originalData: string = this.template;
   private sbls = [new SubjectBacklog()];
@@ -21,9 +21,9 @@ export class BacklogTemplateModalComponent extends SampleDashComponent{
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<BacklogTemplateModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public template: string) { 
-      super(snackBar, dialog);
-     }
+    @Inject(MAT_DIALOG_DATA) public template: string) {
+    super(snackBar, dialog);
+  }
 
   onNoClick(): void {
     this.template = this.originalData || '';
@@ -38,9 +38,10 @@ export class BacklogTemplateModalComponent extends SampleDashComponent{
   }
 
   /**
-   * バックログリストプロパティに値をセット
+   * 削除を取り処理用：バックログオブジェクトListプロパティに値をセット
+   * @param backlogs バックログオブジェクトList
    */
-  public setBacklogs(backlogs: any) {
+  public setBacklogs(backlogs: SubjectBacklog[]): void {
     this.sbls = backlogs;
   }
 
