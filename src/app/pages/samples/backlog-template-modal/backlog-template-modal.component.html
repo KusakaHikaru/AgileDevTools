@@ -1,6 +1,6 @@
 
 <h1 mat-dialog-title>SBLテンプレート作成</h1>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, pbl.sbls)">
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event, sbls)">
   <div class="example-box" *ngFor="let sbl of sbls; index as sblIndex" cdkDrag>
     <div class="input-area">
       <mat-form-field class="sbl-label">

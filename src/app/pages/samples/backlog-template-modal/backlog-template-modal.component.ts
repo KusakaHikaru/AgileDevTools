@@ -1,31 +1,29 @@
 import { Component, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import * as _ from 'lodash';
-
 import { SubjectBacklog } from 'src/app/class/sbl.class';
+import { SampleDashComponent } from 'src/app/pages/samples/sample-dash/sample-dash.component';
+
 
 @Component({
   selector: 'app-backlog-template-modal',
   templateUrl: './backlog-template-modal.component.html',
   styleUrls: ['./backlog-template-modal.component.css']
 })
-export class BacklogTemplateModalComponent {
+export class BacklogTemplateModalComponent extends SampleDashComponent{
 
   private originalData: string = this.template;
   private sbls = [new SubjectBacklog()];
-  private labels = [
-    { id: '01', viewValue: '設計' },
-    { id: '02', viewValue: '設計Rv' },
-    { id: '03', viewValue: 'M_UT' },
-    { id: '04', viewValue: 'M_UT_Rv' },
-  ];
 
   constructor(
-    private snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<BacklogTemplateModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public template: string) { }
+    @Inject(MAT_DIALOG_DATA) public template: string) { 
+      super(snackBar, dialog);
+     }
 
   onNoClick(): void {
     this.template = this.originalData || '';
@@ -40,28 +38,10 @@ export class BacklogTemplateModalComponent {
   }
 
   /**
-   * バックログ(SBL/PBL)削除メソッド
-   * 対象のPBL/SBLオブジェクトを削除
-   * 「取り消し」押下で復元
-   * @param index 配列のIndex
-   * @param target 削除対象のバックログオブジェクトList
-   * @param backlogs 取り消し用のオリジナルバックログオブジェクトList
+   * バックログリストプロパティに値をセット
    */
-  public remove(index: number, target: SubjectBacklog[], sbls: SubjectBacklog[]): void {
-    const originBacklogs = _.cloneDeep(sbls);
-    _.pullAt(target, index);
-    this.cancelRemoveSnackBar(originBacklogs);
-  }
-
-  /**
-   * 削除を取り消すsnackBar表示・アクション処理
-   * @param originBacklogs 復元元のSBLオブジェクト
-   */
-  private cancelRemoveSnackBar(originBacklogs: SubjectBacklog[]) {
-    const snackBarRef = this.snackBar.open('削除しました', '取り消し', { duration: 3000 });
-    snackBarRef.onAction().subscribe(() => {
-      this.sbls = originBacklogs;
-    });
+  public setBacklogs(backlogs: any) {
+    this.sbls = backlogs;
   }
 
 }

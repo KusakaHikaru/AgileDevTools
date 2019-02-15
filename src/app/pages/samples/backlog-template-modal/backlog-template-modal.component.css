@@ -35,6 +35,10 @@ mat-form-field {
   margin: 3px;
 }
 
+.cdk-drag {
+  z-index: 2000 !important;
+}
+
 .sbl-label {
   height: 1em;
   width: 10em;

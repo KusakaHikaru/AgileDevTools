@@ -26,7 +26,7 @@ export class SampleDashComponent {
   ];
 
   constructor(
-    private snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     public dialog: MatDialog
   ) { }
 
@@ -106,7 +106,14 @@ export class SampleDashComponent {
   private cancelRemoveSnackBar(originBacklogs: ProductBacklog[]) {
     const snackBarRef = this.snackBar.open('削除しました', '取り消し', { duration: 3000 });
     snackBarRef.onAction().subscribe(() => {
-      this.pbls = originBacklogs;
+      this.setBacklogs(originBacklogs);
     });
+  }
+
+  /**
+   * バックログリストプロパティに値をセット
+   */
+  public setBacklogs(backlogs: any) {
+    this.pbls = backlogs;
   }
 }
