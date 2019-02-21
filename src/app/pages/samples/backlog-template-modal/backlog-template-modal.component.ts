@@ -16,6 +16,9 @@ export class BacklogTemplateModalComponent extends SampleDashComponent {
 
   private originalData: string = this.template;
   private sbls = [new SubjectBacklog()];
+  private isShowDescriptionModal = false;
+  private sblDump: SubjectBacklog = null;
+  private description: string = '';
 
   constructor(
     public snackBar: MatSnackBar,
@@ -44,6 +47,26 @@ export class BacklogTemplateModalComponent extends SampleDashComponent {
   public setBacklogs(backlogs: SubjectBacklog[]): void {
     this.sbls = backlogs;
   }
+
+  /**
+   * 説明文入力ダイアログの切り替え
+   */
+  public toggleDescriptionModal(): void {
+    this.isShowDescriptionModal = !this.isShowDescriptionModal;
+  }
+
+  /**
+   * 説明文入力ダイアログで入力した文字列をSBLに格納
+   * @param description 説明文
+   */
+  public enterDescription(description: string): void {
+    this.sblDump.description = description;
+  }
+
+  public dumpSbl(sbl: SubjectBacklog): void {
+    this.description = '';
+    this.sblDump = sbl;
+  } 
 
 }
 
