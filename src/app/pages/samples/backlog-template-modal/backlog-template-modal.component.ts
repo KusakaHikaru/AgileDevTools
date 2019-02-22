@@ -63,6 +63,10 @@ export class BacklogTemplateModalComponent extends SampleDashComponent {
     this.sblDump.description = description;
   }
 
+  /**
+   * SBLオブジェクトをグローバル変数に参照渡しする
+   * @param sbl ダンプ元のSBLオブジェクト
+   */
   public dumpSbl(sbl: SubjectBacklog): void {
     this.description = '';
     this.sblDump = sbl;
