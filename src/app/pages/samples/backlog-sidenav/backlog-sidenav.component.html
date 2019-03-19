@@ -1,4 +1,9 @@
 <div class="backlog-sidenav">
+  <div *ngFor="let template of templates; index as i">
+    <div class="template-box" matRipple (click)="openBacklogModal()" cdkDrag>
+      {{ i + 1 }}
+    </div>
+  </div>
   <div class="template-box-add" matRipple (click)="openBacklogModal()">
     <i class="fas fa-plus fa-2x"></i>
   </div>

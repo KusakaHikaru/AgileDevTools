@@ -4,12 +4,16 @@ import { MatDialog } from '@angular/material';
 
 import { BacklogTemplateModalComponent } from 'src/app/pages/samples/backlog-template-modal/backlog-template-modal.component';
 
+import { SubjectBacklog } from 'src/app/class/sbl.class';
+
 @Component({
   selector: 'app-backlog-sidenav',
   templateUrl: './backlog-sidenav.component.html',
   styleUrls: ['./backlog-sidenav.component.css']
 })
 export class BacklogSidenavComponent {
+
+  public templates = [[new SubjectBacklog({title: 'hoge'}),new SubjectBacklog({title: 'fuga'})]];
 
   constructor(
     public dialog: MatDialog
