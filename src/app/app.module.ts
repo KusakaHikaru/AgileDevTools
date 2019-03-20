@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { BacklogSidenavComponent } from 'src/app/pages/samples/backlog-sidenav/backlog-sidenav.component';
 import { BacklogTemplateModalComponent } from 'src/app/pages/samples/backlog-template-modal/backlog-template-modal.component';
+import { SandBoxComponent } from './sand-box/sand-box.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BacklogTemplateModalComponent } from 'src/app/pages/samples/backlog-tem
     AppComponent,
     BacklogSidenavComponent,
     BacklogTemplateModalComponent,
+    SandBoxComponent,
   ],
   imports: [
     BrowserModule,

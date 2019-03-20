@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SandBoxComponent } from './sand-box/sand-box.component'
+
 const routes: Routes = [
-  { path: '', loadChildren: './pages/samples/samples.module#SamplesModule' }
+  { path: 'sample', loadChildren: './pages/samples/samples.module#SamplesModule' },
+  { path: 'sandbox', component: SandBoxComponent }
 ];
 
 @NgModule({
