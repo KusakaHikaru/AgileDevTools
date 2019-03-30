@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 import { ProductBacklog } from 'src/app/class/pbl.class';
 import { SubjectBacklog } from 'src/app/class/sbl.class';
 import { DescriptionModalComponent } from 'src/app/pages/samples/description-modal/description-modal.component';
+import { containsElement } from '@angular/animations/browser/src/render/shared';
 
 @Component({
   selector: 'app-sample-dash',
@@ -17,6 +18,7 @@ import { DescriptionModalComponent } from 'src/app/pages/samples/description-mod
 export class SampleDashComponent {
 
   private pbls = [new ProductBacklog()];
+  private clipedBacklogs: SubjectBacklog[] = null;
   private totalWorkingTime: number | null = null;
   private labels = [
     { id: '01', viewValue: '設計' },
@@ -83,6 +85,22 @@ export class SampleDashComponent {
    */
   public sumBy(collection: ProductBacklog[], iteratee: string): number {
     return _.sumBy(collection, iteratee);
+  }
+
+  /**
+   * SBLをコピー
+   * @param sbls サブジェクトバックログList
+   */
+  public copyBacklogs(sbls: SubjectBacklog[]): void {
+    this.clipedBacklogs = _.cloneDeep(sbls);
+  }
+
+  /**
+   * SBLの貼り付け
+   * @param pbl プロダクトバックログList
+   */
+  public pasteBacklogs(pbl: ProductBacklog): void {
+    pbl.sbls = _.cloneDeep(this.clipedBacklogs);
   }
 
   /**

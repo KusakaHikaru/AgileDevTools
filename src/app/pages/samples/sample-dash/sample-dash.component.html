@@ -23,6 +23,8 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)="copyBacklogs(pbl.sbls)">SBLコピー</button>
+              <button mat-menu-item (click)="pasteBacklogs(pbl); sumEstimatedTime(pbl)" [disabled]="!clipedBacklogs">SBL貼り付け</button>
               <button mat-menu-item (click)="remove(pblIndex, pbls, pbls)">削除</button>
             </mat-menu>
           </mat-card-title>
@@ -75,7 +77,7 @@
     <mat-grid-list class="footer-content" cols="9" rowHeight="60px">
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>ポイント合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
+      <mat-grid-tile>Pt合計：{{sumBy(pbls, 'estimated') || 0}}&nbsp;Pt</mat-grid-tile>
       <mat-grid-tile>見積合計：{{sumBy(pbls, 'estimatedTimeSum') || 0}}&nbsp;h</mat-grid-tile>
       <mat-grid-tile>
         <div>総稼動：&nbsp;</div>
